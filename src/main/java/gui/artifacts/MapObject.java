@@ -29,6 +29,14 @@ public abstract class MapObject {
         this.backgroundColor = backgroundColor;
     }
 
+    public MapObject(TerminalPosition position, boolean free, boolean visible) {
+        this.position = position;
+        this.free = free;
+        this.visible = visible;
+    }
+    
+    
+
     public TerminalPosition getPosition() {
         return position;
     }
