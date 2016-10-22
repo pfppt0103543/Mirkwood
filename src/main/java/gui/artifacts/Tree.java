@@ -1,10 +1,11 @@
-package gui;
+package gui.artifacts;
 
 import java.util.Random;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.TextColor.RGB;
+import gui.SymbolsMirk;
 
 public class Tree {
 	private char mTree;
