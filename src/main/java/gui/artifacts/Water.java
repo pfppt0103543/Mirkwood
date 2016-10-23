@@ -7,6 +7,7 @@ package gui.artifacts;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
+import gui.Map;
 import gui.SymbolsMirk;
 
 /**
@@ -27,16 +28,21 @@ public class Water extends MapObject {
         switch (type) {
             case DEEP:
                 setSymbol(SymbolsMirk.WATER[2]);
+                setBackgroundColor(new TextColor.RGB(30, 150, 200));
                 break;
-            case SHORE:
+            case SHORE: {
                 setSymbol(SymbolsMirk.WATER[1]);
+                setBackgroundColor(Map.bkgColor);
                 break;
-            case NEAR_SHORE:
+            }
+            case NEAR_SHORE: {
                 setSymbol(SymbolsMirk.WATER[1]);
+                setBackgroundColor(Map.bkgColor);
                 break;
+            }
         }
         setForegroundColor(new TextColor.RGB(30, 150, 200));
-        setBackgroundColor(new TextColor.RGB(30, 150, 200));
+        
     }
 
 }
