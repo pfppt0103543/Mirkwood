@@ -23,12 +23,15 @@ public class Water extends MapObject {
     }
 
     public Water(TerminalPosition pos, WaterType type) {
-        super(pos, false, true);
+        super(pos, true, true);
         char symbolWater = 'w';
+      
         switch (type) {
             case DEEP:
                 setSymbol(SymbolsMirk.WATER[2]);
                 setBackgroundColor(new TextColor.RGB(30, 150, 200));
+                setFree(false);
+
                 break;
             case SHORE: {
                 setSymbol(SymbolsMirk.WATER[1]);

@@ -142,29 +142,64 @@ public class Map extends Panel {
 		land.invalidate();
 	}
 	
-	public void updatePlayer(KeyStroke keyStroke) {
-		TerminalPosition ppos = _chars.getHero().get_position();
-		Hero player = _chars.getHero();
-		switch (keyStroke.getCharacter()) {
-		case 'w':
-			player.set_position(new TerminalPosition(ppos.getColumn(), ppos.getRow() - 1));
-			break;
-		case 's':
-			player.set_position(new TerminalPosition(ppos.getColumn(), ppos.getRow()+1));
-			break;
-		case 'a':
-			player.set_position(new TerminalPosition(ppos.getColumn()-1, ppos.getRow()));
-			break;
-		case 'd':
-			player.set_position(new TerminalPosition(ppos.getColumn()+1, ppos.getRow()));
-			break;
-		default:
-			System.out.println(keyStroke.getCharacter().toString());
-			break;
-		}
-		
-		refreshLand();
-	}
+    public void updatePlayer(KeyStroke keyStroke) {
+        TerminalPosition ppos = _chars.getHero().get_position();
+        Hero player = _chars.getHero();
+        switch (keyStroke.getCharacter()) {
+            case 'w': {
+                TerminalPosition npos = new TerminalPosition(ppos.getColumn(), ppos.getRow() - 1);
+                if (isPositionAvailable(npos)) {
+                    player.set_position(npos);
+                }
+                break;
+            }
+            case 's': {
+                TerminalPosition npos = new TerminalPosition(ppos.getColumn(), ppos.getRow() + 1);
+                if (isPositionAvailable(npos)) {
+                    player.set_position(npos);
+                }
+                break;
+            }
+            case 'a': {
+                TerminalPosition npos = new TerminalPosition(ppos.getColumn() - 1, ppos.getRow());
+                if (isPositionAvailable(npos)) {
+                    player.set_position(npos);
+                }
+                break;
+            }
+            case 'd': {
+                TerminalPosition npos = new TerminalPosition(ppos.getColumn() + 1, ppos.getRow());
+                if (isPositionAvailable(npos)) {
+                    player.set_position(npos);
+                }
+                break;
+            }
+            default:
+                System.out.println(keyStroke.getCharacter().toString());
+                break;
+        }
+
+        refreshLand();
+    }
+        
+        private boolean isPositionAvailable(TerminalPosition pos) {
+            
+            for (MapLayer ml : _layers) {
+                for (int i = 0; i < COLUMNS; i++) {
+                    for (int j = 0; j < LINES; j++) {
+                        MapObject mo = ml.getMaplayer()[i][j];
+                        if (mo != null) {
+                            if (mo.getPosition().getColumn() == pos.getColumn() && 
+                                    mo.getPosition().getRow() == pos.getRow() &&
+                                    !mo.isFree())
+                                return false;
+                        }
+                    }
+                }
+            }
+            
+            return true;
+        }
 
 	/*
 	 * @Override protected void onAfterDrawing(TextGUIGraphics graphics) { //
