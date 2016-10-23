@@ -1,5 +1,6 @@
 package gui;
 
+import gui.artifacts.Tree;
 import java.util.EnumSet;
 import java.util.Random;
 
