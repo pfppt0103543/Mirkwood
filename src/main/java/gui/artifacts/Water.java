@@ -36,7 +36,7 @@ public class Water extends MapObject {
                 break;
             }
             case NEAR_SHORE: {
-                setSymbol(SymbolsMirk.WATER[1]);
+                setSymbol(SymbolsMirk.WATER[0]);
                 setBackgroundColor(Map.bkgColor);
                 break;
             }

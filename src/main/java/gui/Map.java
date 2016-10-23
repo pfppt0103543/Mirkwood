@@ -15,7 +15,9 @@ import com.googlecode.lanterna.gui2.Panel;
 import com.googlecode.lanterna.gui2.TextGUIGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import gui.artifacts.LayerRiver;
+import gui.artifacts.MapLayer;
 import gui.artifacts.MapObject;
+import java.util.ArrayList;
 
 import script.Characters;
 import script.Foe;
@@ -35,6 +37,8 @@ public class Map extends Panel {
 	Tree[] treespos = new Tree[TREECOUNT];
 	Tree[] branchespos = new Tree[BRANCHESCOUNT];
 	public static RGB bkgColor = new TextColor.RGB(165, 127, 61);
+        
+        ArrayList<MapLayer> _layers;
 	
 	Characters _chars;
 
@@ -42,6 +46,13 @@ public class Map extends Panel {
 
 	public Map(Characters chars) {
 		super();
+                
+                
+                /*
+                Create the respective layers
+                */
+                _layers = new ArrayList<MapLayer>();
+                _layers.add(new LayerRiver());
 
 		_chars = chars;
 		getBasePane();
@@ -79,18 +90,20 @@ public class Map extends Panel {
 						}
 						
 						/*
-						 * Creates the river
+						 * Creates the objects of layers
 						 */
-                                                LayerRiver river = new LayerRiver();
-                                                for (int i=0; i < COLUMNS; i++)
-                                                    for (int j=0; j < LINES; j++) {
-                                                        MapObject mo = river.getMaplayer()[i][j];
-                                                        if(mo != null) {
+                                            for (MapLayer ml : _layers) {
+                                                for (int i = 0; i < COLUMNS; i++) {
+                                                    for (int j = 0; j < LINES; j++) {
+                                                        MapObject mo = ml.getMaplayer()[i][j];
+                                                        if (mo != null) {
                                                             graphics.setForegroundColor(mo.getForegroundColor());
                                                             graphics.setBackgroundColor(mo.getBackgroundColor());
                                                             graphics.putString(mo.getPosition(), String.valueOf(mo.getSymbol()));
                                                         }
                                                     }
+                                                }
+                                            }
                                                     
                                                     
 
