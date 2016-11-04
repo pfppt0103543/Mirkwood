@@ -6,22 +6,23 @@
 package artefactos;
 
 import com.googlecode.lanterna.TextColor;
-import gui.Map;
+import com.googlecode.lanterna.TextColor.RGB;
 import gui.SymbolsMirk;
+import gui.Map;
 
 /**
  *
  * @author Trainerpl022
  */
-public class Tree2 extends MapObject {
-    
-    public Tree2() {
+public class Bridge extends MapObject {
+    TextColor.RGB foreColor = new RGB(150, 150, 150);
+    TextColor.RGB bkgColor = new RGB(100, 100, 100);
+    public Bridge(char Sym) {
         super();
-        int rverde = _rand.nextInt(150)+100;
-        setSymbol(SymbolsMirk.TREES[_rand.nextInt(SymbolsMirk.TREES.length)]);
-        setForegroundColor(new TextColor.RGB(0,rverde, 0));     
-        setBackgroundColor(Map.bkgColor);
+        setForegroundColor(foreColor);
+        setBackgroundColor(bkgColor);
         setWalkthrough(true);
+        setSymbol(Sym);
     }
     
 }
