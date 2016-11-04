@@ -25,4 +25,6 @@ public class Bridge extends MapObject {
         setSymbol(Sym);
     }
     
+    // Ponte Smaug
+    
 }
