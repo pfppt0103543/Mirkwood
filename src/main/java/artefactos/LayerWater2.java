@@ -27,7 +27,7 @@ public class LayerWater2 extends MapLayer {
         super();
         
         generateWater2();
-       
+       /*asdasdasd*/
     }
     
     // Gerar as arvores do Pedro
