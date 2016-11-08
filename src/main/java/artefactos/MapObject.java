@@ -18,7 +18,7 @@ public class MapObject {
     TextColor.RGB foregroundColor;
     TextColor.RGB backgroundColor;
     boolean walkthrough = true;
-   
+    boolean visible = true;
     protected Random _rand;
 
   
@@ -33,6 +33,14 @@ public class MapObject {
     }
   public boolean isWalkthrough() {
         return walkthrough;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public void setWalkthrough(boolean walkthrough) {
@@ -61,6 +69,14 @@ public class MapObject {
 
     public void setBackgroundColor(TextColor.RGB backgroundColor) {
         this.backgroundColor = backgroundColor;
+    }
+
+    public Object getPosition() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isFree() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -5,10 +5,12 @@
  */
 package artefactos;
 
+import com.sun.glass.ui.Cursor;
 import static gui.Map.BRANCHESCOUNT;
 import static gui.Map.COLUMNS;
 import static gui.Map.LINES;
 import static gui.Map.TREECOUNT;
+import gui.SymbolsMirk;
 import script.Orc;
 import script.Spider;
 
@@ -16,27 +18,23 @@ import script.Spider;
  *
  * @author Trainerpl022
  */
-public class LayerFoes extends MapLayer {
+public class LayerPocoes extends MapLayer {
     
     private final int ORCS = 10;
     private final int SPIDERS = 3;
     
-    public LayerFoes() {
+    public LayerPocoes() {
      
-        generateSpiders();
-        generateOrcs();
+        generatePocoes();
+
+       
     }
-    
-	public void generateOrcs() {
-            for (int i=0; i < LINES; i=i+2)
-		this.objectos[4][i] = new Orc();
-                
 
-	}
-        public void generateSpiders() {
-            for (int i=0; i < SPIDERS; i++)
-		this.objectos[_rand.nextInt(COLUMNS)][_rand.nextInt(LINES)] = new Spider();
-                
-
+        public void generatePocoes() {
+  
+            for (int i = 0; i < 3; i++) {
+                this.objectos[_rand.nextInt(COLUMNS)][_rand.nextInt(LINES)] = new Pocoes(SymbolsMirk.POTS);
+            }
+		     
 	}
 }

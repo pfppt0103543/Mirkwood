@@ -1,6 +1,8 @@
 package gui;
 
 import artefactos.LayerFoes;
+import artefactos.LayerPocoes;
+import artefactos.LayerTreasure;
 import artefactos.LayerTrees;
 import artefactos.LayerWater2;
 import artefactos.MapLayer;
@@ -27,7 +29,7 @@ import script.Hero;
 import script.Orc;
 
 public class Map extends Panel {
-
+        public static final int COINS=0;
 	public static final int COLUMNS = 50;
 	public static final int LINES = 16;
 	
@@ -58,13 +60,15 @@ public class Map extends Panel {
 		LayerTrees trees = new LayerTrees();
                 LayerFoes foes = new LayerFoes();
                 LayerWater2 water = new LayerWater2();
-                
+                LayerTreasure treasure = new LayerTreasure();
+                LayerPocoes pocoes = new LayerPocoes();
                 
                 layers = new ArrayList();
                 layers.add(trees);
                 layers.add(foes);
                 layers.add(water);
-
+                layers.add(treasure);
+                layers.add(pocoes);
 		
 
 		land = new EmptySpace(new TextColor.RGB(165, 127, 61)) {
@@ -98,7 +102,7 @@ public class Map extends Panel {
                                                  for (int x=0; x < COLUMNS; x++) {
                                                     for (int y=0; y< LINES; y++) {
                                                         MapObject o = (MapObject) ml.getMap()[x][y];
-                                                        if (o != null) {
+                                                        if (o != null && o.isVisible()) {
                                                             graphics.setBackgroundColor(o.getBackgroundColor());
                                                             graphics.setForegroundColor(o.getForegroundColor());
                                                             graphics.putString(x, y, String.valueOf(o.getSymbol()));
@@ -181,16 +185,19 @@ public class Map extends Panel {
 		refreshLand();
 	}
 
-	/*
-	 * @Override protected void onAfterDrawing(TextGUIGraphics graphics) { //
-	 * TODO Auto-generated method stub super.onAfterDrawing(graphics);
-	 * graphics.setForegroundColor(TextColor.ANSI.CYAN);
-	 * graphics.setBackgroundColor(TextColor.ANSI.BLUE);
-	 * graphics.setModifiers(EnumSet.of(SGR.BOLD)); graphics.fill(' ');
-	 * graphics.putString(3, 0, "Text GUI in 100% Java"); }
-	 */
     private boolean canPass(int x, int y) {
         for (MapLayer ml : layers) {
+                  if (x <0)
+                return false;
+            else if (x > COLUMNS -1)
+                return false;
+            else if (y <0)
+                return false;
+            else if (y > LINES -1)
+                return false;
+                  
+                  
+    
             if (ml.getMap()[x][y] != null) {
                 MapObject[][] map = ml.getMap();
                 MapObject mo = map[x][y];

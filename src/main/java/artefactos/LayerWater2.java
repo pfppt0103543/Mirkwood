@@ -42,14 +42,14 @@ public class LayerWater2 extends MapLayer {
                         this.objectos[waterpos[j] +1][j] = new Water2(SymbolsMirk.WATER[1]);
                         this.objectos[waterpos[j] -1][j] = new Water2(SymbolsMirk.WATER[1]);
                         this.objectos[waterpos[j]][j] = new Water2(SymbolsMirk.WATER[2]);
-                        }
-                  
-                        this.objectos[waterpos[7] +2][7] = new Bridge(SymbolsMirk.BRIDGE);
-                        this.objectos[waterpos[7] -2][7] = new Bridge(SymbolsMirk.BRIDGE);
-                        this.objectos[waterpos[7] +1][7] = new Bridge(SymbolsMirk.BRIDGE);
-                        this.objectos[waterpos[7] -1][7] = new Bridge(SymbolsMirk.BRIDGE);
-                        this.objectos[waterpos[7]][7] = new Bridge(SymbolsMirk.BRIDGE);
                         
+                  }
+                        this.objectos[waterpos[3] +2][3] = new Bridge(SymbolsMirk.BRIDGE);
+                        this.objectos[waterpos[3] -2][3] = new Bridge(SymbolsMirk.BRIDGE);
+                        this.objectos[waterpos[3] +1][3] = new Bridge(SymbolsMirk.BRIDGE);
+                        this.objectos[waterpos[3] -1][3] = new Bridge(SymbolsMirk.BRIDGE);
+                        this.objectos[waterpos[3]][3] = new Bridge(SymbolsMirk.BRIDGE);
+                   
                    
 	}       
 }
